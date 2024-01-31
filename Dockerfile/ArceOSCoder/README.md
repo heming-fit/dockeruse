@@ -2,7 +2,7 @@
 开箱即用的 ArceOS 编译环境主要用于学习和开发，基础镜像：ubuntu:22.04
 > - ArceOS 是一个开源的、组件化的 Unikernel。以组合组件库的方式构建系统。
 > - 在镜像中集成了 vscode 和 rust 编程环境，降低新手入门门槛
-> - 使用说明 https://github.com/heming-fit/dockeruse/Dockerfile/ArceOSCoder/GetStarted/README.md
+> - 使用说明 https://github.com/heming-fit/dockeruse/blob/main/Dockerfile/ArceOSCoder/GetStarted/README.md
 ### 拉取镜像
 ```
 docker pull zerounnet/arceos_coder:latest
