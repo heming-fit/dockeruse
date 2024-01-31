@@ -27,7 +27,7 @@ docker ps
 
 > ![](2024-01-31-14-47-25.png)
 
-#### ctrl+` 打开终端，输入以下命令，编译 helloworld
+#### 在 VSCode 编辑器中 ctrl+` 打开终端，输入以下命令编译 helloworld
 ```bash
 # 进入arceos开发目录
 cd /root/arceos/
