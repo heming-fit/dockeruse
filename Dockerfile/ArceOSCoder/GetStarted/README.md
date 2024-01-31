@@ -19,10 +19,12 @@ docker run -p 8080:8080 --name coder -d zerounnet/arceos_coder:latest
 # 检查是否成功
 docker ps
 ```
+
 > ![](2024-01-31-14-41-12.png)
 
 #### 打开浏览器进入开发环境，并进入 arceos 开发目录
 > http://localhost:8080/?folder=/root/arceos
+
 > ![](2024-01-31-14-47-25.png)
 
 #### ctrl+` 打开终端，输入以下命令，编译 helloworld
@@ -38,6 +40,7 @@ make ARCH=riscv64 A=apps/helloworld run
 
 #### 如果出现这一步，恭喜你完成了实验环境的配置。
 > 不成功基本都因为网络连通引起的，需要科学地进行网络配置。
+
 > ![](2024-01-31-14-54-19.png)
 
 #### 新建一个应用，名为 md5
@@ -50,6 +53,7 @@ cargo init --name arceos-md5
 cat Cargo.toml
 ```
 > ![](2024-01-31-16-02-19.png)
+
 #### 复制 helloworld 的 main.rs 到 md5 目录
 ```bash
 # 复制helloworld的main.rs到md5目录
@@ -114,6 +118,7 @@ println!("{hash}"); // "bc6e6f16b8a077ef5fbc8d59d0b931b9"
 make ARCH=riscv64 A=apps/md5 run
 ```
 > ![](2024-01-31-16-19-41.png)
+
 > 详见 https://rcore-os.cn/rCore-Tutorial-Book-v3/chapter1/2remove-std.html
 
 #### 使用 axstd::string::String 替代原始 String，重新编译应用
@@ -156,4 +161,5 @@ println!("{hash}"); // "bc6e6f16b8a077ef5fbc8d59d0b931b9"
 make ARCH=riscv64 A=apps/md5 run
 ```
 > 如果出现这一步，恭喜你完成了第一个应用的开发。
+
 > ![](2024-01-31-16-25-42.png)
