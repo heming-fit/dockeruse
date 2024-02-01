@@ -121,7 +121,7 @@ make ARCH=riscv64 A=apps/md5 run
 
 > 详见 https://rcore-os.cn/rCore-Tutorial-Book-v3/chapter1/2remove-std.html
 
-#### 使用 axstd::string::String 替代原始 String，重新编译应用
+#### 使用 macro_use 和 extern crate axstd as std 完整替代 std，重新编译应用
 > 详见 https://rcore-os.cn/arceos-tutorial-book/ch03-04.html
 ```toml
 # apps/md5/Cargo.toml
@@ -129,32 +129,13 @@ axstd = { path = "../../ulib/axstd", features=["alloc"], optional = true }
 ```
 > ![](2024-01-31-17-08-14.png)
 ```rust
-// apps/md5/src/main.rs
+// apps/md5/src/main.rs 代码替换为
+#[macro_use]
 #[cfg(feature = "axstd")]
-use axstd::string::String;
+extern crate axstd as std;
+use std::string::String;
 ```
-> ![](2024-01-31-16-22-14.png)
-```bash
-make ARCH=riscv64 A=apps/md5 run
-```
-> ![](2024-01-31-16-23-01.png)
-
-#### 缺乏 format 宏，目前在 axstd 库中没有找到对应的宏，需要自己实现
-```rust
-// apps/md5/src/main.rs
-// format!("{:02x}", x) 表示将一个数字格式化为至少两位的十六进制数，如果数字不足两位，则在前面补 0。
-// 创建了一个包含十六进制字符的数组 hex_chars。
-// 对于 digest 中的每个字节，它将字节除以 16 并取结果的整数部分作为索引来查找对应的十六进制字符，然后将字节与 16 取余数作为索引来查找对应的十六进制字符。
-// 这两个字符就是字节的十六进制表示。
-let mut hash = String::new();
-let hex = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
-for byte in digest.iter() {
-    hash.push(hex[(byte / 16) as usize]);
-    hash.push(hex[(byte % 16) as usize]);
-}
-println!("{hash}"); // "bc6e6f16b8a077ef5fbc8d59d0b931b9"
-```
-> ![](2024-01-31-16-25-19.png)
+> ![](2024-02-01-08-06-58.png)
 
 #### 重新编译应用，成功
 ```bash
