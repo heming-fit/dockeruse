@@ -14,7 +14,7 @@ docker build ./dockeruse/Dockerfile/ArceOSCoder/ -t zerounnet/arceos_coder:lates
 ```
 ### 启动镜像
 ```
-docker run -p 8080:8080 -d  --name coder zerounnet/arceos_coder:latest
+docker run -p 8080:8080 -d --privileged=true --name coder zerounnet/arceos_coder:latest
 ```
 ### 访问开发环境
 ```
