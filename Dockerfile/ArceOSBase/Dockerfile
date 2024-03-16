@@ -7,6 +7,7 @@ RUN apt-get update && apt-get upgrade -y && \
     chmod u+x ./rustup && \
     ./rustup --default-toolchain nightly --no-modify-path -y && \
     rustup target add riscv64gc-unknown-none-elf && \
+    rustup target add aarch64-unknown-linux-gnu && \
     rustup component add llvm-tools-preview && \
     rustup component add rust-src && \
     cargo install cargo-binutils && \
