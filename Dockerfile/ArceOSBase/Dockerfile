@@ -19,7 +19,7 @@ RUN apt-get update && apt-get upgrade -y && \
     wget https://download.qemu.org/qemu-7.0.0.tar.xz && \
     tar xvJf qemu-7.0.0.tar.xz && \
     cd qemu-7.0.0 && \
-    ./configure --target-list=riscv64-softmmu,riscv64-linux-user,riscv64-softmmu,riscv64-linux-user && \
+    ./configure --target-list=riscv64-softmmu,riscv64-linux-user,aarch64-softmmu,aarch64-linux-user && \
     make -j$(nproc) && \
     make install && \
     cd ~ && \
